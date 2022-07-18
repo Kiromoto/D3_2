@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Product
 
 
@@ -10,3 +10,9 @@ class ProductsList(ListView):
     template_name = 'products.html'
     # Это имя списка, в котором будут лежать все объекты. Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     context_object_name = 'products'
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name = 'product.html'
+    context_object_name = 'product'
+
