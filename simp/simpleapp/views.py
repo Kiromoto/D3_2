@@ -11,6 +11,11 @@ class ProductsList(ListView):
     # Это имя списка, в котором будут лежать все объекты. Его надо указать, чтобы обратиться к списку объектов в html-шаблоне.
     context_object_name = 'products'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['next_sale'] = None #'Распродажа уже в эту пятницу!!!'
+        return context
+
 class ProductDetail(DetailView):
     model = Product
     template_name = 'product.html'
